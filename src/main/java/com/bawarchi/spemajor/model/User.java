@@ -1,70 +1,60 @@
 package com.bawarchi.spemajor.model;
 
-import jakarta.persistence.*;
+import jakarta.persistence.Entity;
+import jakarta.persistence.OneToMany;
+import jakarta.persistence.PrimaryKeyJoinColumn;
+
+import java.util.List;
 
 @Entity
-@Inheritance(strategy = InheritanceType.JOINED)
-public class User {
-    @Id
-    @GeneratedValue
-    private int id;
+@PrimaryKeyJoinColumn(name = "id")
+public class User extends userAuth{
+    private String name;
 
-    @Column(unique = true)
-    private String userId;
+    private String contact;
 
-    private String password;
-
-    private String role;
+    @OneToMany(mappedBy = "user")
+    private List<Cart> cartList;
 
     public User() {
     }
 
-    public User(int id, String userId, String password, String role) {
-        this.id = id;
-        this.userId = userId;
-        this.password = password;
-        this.role = role;
+    public User(String name, String contact, List<Cart> cartList) {
+        this.name = name;
+        this.contact = contact;
+        this.cartList = cartList;
     }
 
-    public int getId() {
-        return id;
+    public String getName() {
+        return name;
     }
 
-    public void setId(int id) {
-        this.id = id;
+    public void setName(String name) {
+        this.name = name;
     }
 
-    public String getUserId() {
-        return userId;
+    public String getContact() {
+        return contact;
     }
 
-    public void setUserId(String userId) {
-        this.userId = userId;
+    public void setContact(String contact) {
+        this.contact = contact;
     }
 
-    public String getPassword() {
-        return password;
+    public List<Cart> getCartList() {
+        return cartList;
     }
 
-    public void setPassword(String password) {
-        this.password = password;
-    }
-
-    public String getRole() {
-        return role;
-    }
-
-    public void setRole(String role) {
-        this.role = role;
+    public void setCartList(List<Cart> cartList) {
+        this.cartList = cartList;
     }
 
     @Override
     public String toString() {
         return "User{" +
-                "id=" + id +
-                ", userId='" + userId + '\'' +
-                ", password='" + password + '\'' +
-                ", role='" + role + '\'' +
+                "name='" + name + '\'' +
+                ", contact='" + contact + '\'' +
+                ", cartList=" + cartList +
                 '}';
     }
 }

@@ -1,19 +1,19 @@
 package com.bawarchi.spemajor.model;
 
-import jakarta.persistence.*;
+import jakarta.persistence.Entity;
+import jakarta.persistence.OneToMany;
+import jakarta.persistence.PrimaryKeyJoinColumn;
 
 import java.util.List;
 
 @Entity
 @PrimaryKeyJoinColumn(name = "id")
-public class Restaurant extends User{
+public class Restaurant extends RestaurantAuth{
     private String name;
 
     private String contact;
 
-    @ManyToOne
-    @JoinColumn(name = "food_court_id")
-    private FoodCourt foodCourt;
+    private int FoodCourtId;
 
     @OneToMany(mappedBy = "restaurant")
     private List<Dish> dishList;
@@ -21,19 +21,15 @@ public class Restaurant extends User{
     @OneToMany(mappedBy = "restaurant")
     private List<Order> orderList;
 
-    @OneToMany(mappedBy = "restaurant")
-    private List<Cart> cartList;
-
     public Restaurant() {
     }
 
-    public Restaurant(String name, String contact, FoodCourt foodCourt, List<Dish> dishList, List<Order> orderList, List<Cart> cartList) {
+    public Restaurant(String name, String contact, int foodCourtId, List<Dish> dishList, List<Order> orderList) {
         this.name = name;
         this.contact = contact;
-        this.foodCourt = foodCourt;
+        FoodCourtId = foodCourtId;
         this.dishList = dishList;
         this.orderList = orderList;
-        this.cartList = cartList;
     }
 
     public String getName() {
@@ -52,12 +48,12 @@ public class Restaurant extends User{
         this.contact = contact;
     }
 
-    public FoodCourt getFoodCourt() {
-        return foodCourt;
+    public int getFoodCourtId() {
+        return FoodCourtId;
     }
 
-    public void setFoodCourt(FoodCourt foodCourt) {
-        this.foodCourt = foodCourt;
+    public void setFoodCourtId(int foodCourtId) {
+        FoodCourtId = foodCourtId;
     }
 
     public List<Dish> getDishList() {
@@ -76,22 +72,14 @@ public class Restaurant extends User{
         this.orderList = orderList;
     }
 
-    public List<Cart> getCartList() {
-        return cartList;
-    }
-
-    public void setCartList(List<Cart> cartList) {
-        this.cartList = cartList;
-    }
     @Override
     public String toString() {
         return "Restaurant{" +
                 "name='" + name + '\'' +
                 ", contact='" + contact + '\'' +
-                ", foodCourt=" + foodCourt +
+                ", FoodCourtId=" + FoodCourtId +
                 ", dishList=" + dishList +
                 ", orderList=" + orderList +
-                ", cartList=" + cartList +
                 '}';
     }
 }

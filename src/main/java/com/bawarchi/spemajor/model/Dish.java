@@ -1,9 +1,8 @@
 package com.bawarchi.spemajor.model;
 
-import jakarta.persistence.Entity;
-import jakarta.persistence.GeneratedValue;
-import jakarta.persistence.Id;
-import jakarta.persistence.ManyToOne;
+import jakarta.persistence.*;
+
+import java.util.List;
 
 @Entity
 public class Dish {
@@ -18,17 +17,22 @@ public class Dish {
     private String category;
 
     @ManyToOne
+    @JoinColumn(name = "restaurant_id")
     private Restaurant restaurant;
+
+    @ManyToMany
+    private List<Order> orderList;
 
     public Dish() {
     }
 
-    public Dish(int dishId, String name, double price, String category, Restaurant restaurant) {
+    public Dish(int dishId, String name, double price, String category, Restaurant restaurant, List<Order> orderList) {
         this.dishId = dishId;
         this.name = name;
         this.price = price;
         this.category = category;
         this.restaurant = restaurant;
+        this.orderList = orderList;
     }
 
     public int getDishId() {
@@ -71,6 +75,14 @@ public class Dish {
         this.restaurant = restaurant;
     }
 
+    public List<Order> getOrderList() {
+        return orderList;
+    }
+
+    public void setOrderList(List<Order> orderList) {
+        this.orderList = orderList;
+    }
+
     @Override
     public String toString() {
         return "Dish{" +
@@ -79,6 +91,7 @@ public class Dish {
                 ", price=" + price +
                 ", category='" + category + '\'' +
                 ", restaurant=" + restaurant +
+                ", orderList=" + orderList +
                 '}';
     }
 }

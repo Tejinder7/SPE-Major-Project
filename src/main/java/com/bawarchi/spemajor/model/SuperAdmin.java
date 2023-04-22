@@ -4,14 +4,13 @@ import jakarta.persistence.Entity;
 import jakarta.persistence.PrimaryKeyJoinColumn;
 
 @Entity
-@PrimaryKeyJoinColumn(name = "id")
-public class SuperAdmin extends User{
-
+@PrimaryKeyJoinColumn(name = "authId")
+public class SuperAdmin extends SuperAuth{
     public SuperAdmin() {
     }
 
-    public SuperAdmin(int id, String userId, String password, String role) {
-        super(id, userId, password, role);
+    public SuperAdmin(int authId, String username, String password, Role role) {
+        super(authId, username, password, role);
     }
 
     @Override
