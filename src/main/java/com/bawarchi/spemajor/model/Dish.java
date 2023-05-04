@@ -20,19 +20,19 @@ public class Dish {
     @JoinColumn(name = "restaurant_id")
     private Restaurant restaurant;
 
-    @ManyToMany
-    private List<Order> orderList;
+    @ManyToMany(mappedBy = "dishList")
+    private List<Ordered> orderedList;
 
     public Dish() {
     }
 
-    public Dish(int dishId, String name, double price, String category, Restaurant restaurant, List<Order> orderList) {
+    public Dish(int dishId, String name, double price, String category, Restaurant restaurant, List<Ordered> orderedList) {
         this.dishId = dishId;
         this.name = name;
         this.price = price;
         this.category = category;
         this.restaurant = restaurant;
-        this.orderList = orderList;
+        this.orderedList = orderedList;
     }
 
     public int getDishId() {
@@ -75,12 +75,12 @@ public class Dish {
         this.restaurant = restaurant;
     }
 
-    public List<Order> getOrderList() {
-        return orderList;
+    public List<Ordered> getOrderList() {
+        return orderedList;
     }
 
-    public void setOrderList(List<Order> orderList) {
-        this.orderList = orderList;
+    public void setOrderList(List<Ordered> orderedList) {
+        this.orderedList = orderedList;
     }
 
     @Override
@@ -91,7 +91,7 @@ public class Dish {
                 ", price=" + price +
                 ", category='" + category + '\'' +
                 ", restaurant=" + restaurant +
-                ", orderList=" + orderList +
+                ", orderList=" + orderedList +
                 '}';
     }
 }
