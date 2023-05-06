@@ -1,5 +1,6 @@
 package com.bawarchi.spemajor.model;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import jakarta.persistence.*;
 
 import java.util.List;
@@ -18,9 +19,11 @@ public class Dish {
 
     @ManyToOne
     @JoinColumn(name = "restaurant_id")
+    @JsonIgnore
     private Restaurant restaurant;
 
     @ManyToMany(mappedBy = "dishList")
+    @JsonIgnore
     private List<Ordered> orderedList;
 
     public Dish() {
