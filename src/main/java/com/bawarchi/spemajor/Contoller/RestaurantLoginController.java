@@ -23,10 +23,10 @@ public class RestaurantLoginController {
     }
 
     @PostMapping("/")
-    public ResponseEntity<RestaurantAuth> loginUser(@RequestParam("username") String username, @RequestParam("password") String password, @RequestParam("role") String role){
-       RestaurantAuth restaurantAuth = restaurantAuthService.loginCheck(username, password, role);
+    public ResponseEntity<RestaurantAuth> loginUser(@RequestBody RestaurantAuth restaurantAuthIn){
+       RestaurantAuth restaurantAuthOut = restaurantAuthService.loginCheck(restaurantAuthIn.getUsername(), restaurantAuthIn.getPassword(), restaurantAuthIn.getRole());
 
-        return ResponseEntity.of(Optional.of(restaurantAuth));
+        return ResponseEntity.of(Optional.of(restaurantAuthOut));
     }
 
     @PostMapping("/addRestaurant")

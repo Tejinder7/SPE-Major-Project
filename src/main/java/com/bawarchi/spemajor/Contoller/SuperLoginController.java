@@ -11,6 +11,7 @@ import java.util.Optional;
 
 @RestController
 @RequestMapping("/slogin")
+@CrossOrigin("http://localhost:3000/")
 public class SuperLoginController {
 
     private SuperAdminService superAdminService;
@@ -31,8 +32,8 @@ public class SuperLoginController {
 
 
     @PostMapping("/")
-    public ResponseEntity<SuperAuth> loginUser(@RequestParam("username") String username, @RequestParam("password") String password, @RequestParam("role") String role){
-        SuperAuth superAuth = superAuthService.loginCheck(username, password, role);
+    public ResponseEntity<SuperAuth> loginUser(@RequestBody SuperAuth superAuthIn){
+        SuperAuth superAuth = superAuthService.loginCheck(superAuthIn.getUsername(), superAuthIn.getPassword(), superAuthIn.getRole().name());
 
         return ResponseEntity.of(Optional.of(superAuth));
     }
