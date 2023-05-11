@@ -33,4 +33,17 @@ public class OrderedService {
         return orderList;
     }
 
+    public Ordered updateOrderStatus(int orderId) throws RuntimeException{
+        Ordered order = orderedRepository.findByOrderId(orderId);
+
+        if(order==null){
+            System.out.println("Order not found");
+        }
+
+        order.setStatus(true);
+
+        order = orderedRepository.save(order);
+
+        return order;
+    }
 }

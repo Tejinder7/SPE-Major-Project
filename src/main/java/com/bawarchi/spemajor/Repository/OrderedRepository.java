@@ -10,4 +10,6 @@ public interface OrderedRepository extends JpaRepository<Ordered, Integer> {
 
     List<Ordered> findByRestaurantAndStatus(Restaurant restaurant, Boolean status);
 
+    Ordered findByOrderId(int orderId);
+
 }

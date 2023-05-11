@@ -45,4 +45,12 @@ public class RestaurantController {
         return ResponseEntity.of(Optional.of(orderList));
     }
 
+    @PutMapping("/markOrderComplete/{order_id}")
+    public ResponseEntity<Ordered> updateOrderStatus(@PathVariable int order_id){
+        Ordered orderedOut = orderedService.updateOrderStatus(order_id);
+
+        return ResponseEntity.of(Optional.of(orderedOut));
+
+    }
+
 }
