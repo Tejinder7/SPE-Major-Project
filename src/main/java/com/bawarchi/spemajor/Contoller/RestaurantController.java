@@ -38,9 +38,9 @@ public class RestaurantController {
         return ResponseEntity.of(Optional.of(dishOut));
     }
 
-    @GetMapping("/{restaurant_id}/fetchOrders")
-    public ResponseEntity<List<Ordered>> fetchOrders(@PathVariable int restaurant_id){
-        List<Ordered> orderList = orderedService.fetchOrders(restaurant_id);
+    @GetMapping("/{restaurant_id}/fetchPendingOrders")
+    public ResponseEntity<List<Ordered>> fetchPendingOrders(@PathVariable int restaurant_id){
+        List<Ordered> orderList = orderedService.fetchPendingOrders(restaurant_id);
 
         return ResponseEntity.of(Optional.of(orderList));
     }

@@ -21,14 +21,14 @@ public class OrderedService {
     }
 
 
-    public List<Ordered> fetchOrders(int restaurant_id) throws RuntimeException{
+    public List<Ordered> fetchPendingOrders(int restaurant_id) throws RuntimeException{
         Restaurant restaurant = restaurantRepository.findByRestaurantAuthId(restaurant_id);
 
         if(restaurant==null){
             System.out.println("Restaurant not found");
         }
 
-        List<Ordered> orderList = orderedRepository.findByRestaurant(restaurant);
+        List<Ordered> orderList = orderedRepository.findByRestaurantAndStatus(restaurant, false);
 
         return orderList;
     }

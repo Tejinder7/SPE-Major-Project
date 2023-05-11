@@ -8,6 +8,6 @@ import java.util.List;
 
 public interface OrderedRepository extends JpaRepository<Ordered, Integer> {
 
-    List<Ordered> findByRestaurant(Restaurant restaurant);
+    List<Ordered> findByRestaurantAndStatus(Restaurant restaurant, Boolean status);
 
 }
