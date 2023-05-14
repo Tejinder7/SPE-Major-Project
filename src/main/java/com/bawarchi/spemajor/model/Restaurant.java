@@ -19,17 +19,17 @@ public class Restaurant extends RestaurantAuth{
     private List<Dish> dishList;
 
     @OneToMany(mappedBy = "restaurant")
-    private List<Ordered> orderedList;
+    private List<AllOrders> allOrdersList;
 
     public Restaurant() {
     }
 
-    public Restaurant(String name, String contact, int foodCourtId, List<Dish> dishList, List<Ordered> orderedList) {
+    public Restaurant(String name, String contact, int foodCourtId, List<Dish> dishList, List<AllOrders> allOrdersList) {
         this.name = name;
         this.contact = contact;
         FoodCourtId = foodCourtId;
         this.dishList = dishList;
-        this.orderedList = orderedList;
+        this.allOrdersList = allOrdersList;
     }
 
     public String getName() {
@@ -64,12 +64,12 @@ public class Restaurant extends RestaurantAuth{
         this.dishList = dishList;
     }
 
-    public List<Ordered> getOrderList() {
-        return orderedList;
+    public List<AllOrders> getOrderList() {
+        return allOrdersList;
     }
 
-    public void setOrderList(List<Ordered> orderedList) {
-        this.orderedList = orderedList;
+    public void setOrderList(List<AllOrders> allOrdersList) {
+        this.allOrdersList = allOrdersList;
     }
 
     @Override
@@ -79,7 +79,7 @@ public class Restaurant extends RestaurantAuth{
                 ", contact='" + contact + '\'' +
                 ", FoodCourtId=" + FoodCourtId +
                 ", dishList=" + dishList +
-                ", orderList=" + orderedList +
+                ", orderList=" + allOrdersList +
                 '}';
     }
 }

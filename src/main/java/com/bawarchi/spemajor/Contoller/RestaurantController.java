@@ -3,7 +3,7 @@ package com.bawarchi.spemajor.Contoller;
 import com.bawarchi.spemajor.Service.DishService;
 import com.bawarchi.spemajor.Service.OrderedService;
 import com.bawarchi.spemajor.model.Dish;
-import com.bawarchi.spemajor.model.Ordered;
+import com.bawarchi.spemajor.model.AllOrders;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
@@ -39,17 +39,17 @@ public class RestaurantController {
     }
 
     @GetMapping("/{restaurant_id}/fetchPendingOrders")
-    public ResponseEntity<List<Ordered>> fetchPendingOrders(@PathVariable int restaurant_id){
-        List<Ordered> orderList = orderedService.fetchPendingOrders(restaurant_id);
+    public ResponseEntity<List<AllOrders>> fetchPendingOrders(@PathVariable int restaurant_id){
+        List<AllOrders> orderList = orderedService.fetchPendingOrders(restaurant_id);
 
         return ResponseEntity.of(Optional.of(orderList));
     }
 
     @PutMapping("/markOrderComplete/{order_id}")
-    public ResponseEntity<Ordered> updateOrderStatus(@PathVariable int order_id){
-        Ordered orderedOut = orderedService.updateOrderStatus(order_id);
+    public ResponseEntity<AllOrders> updateOrderStatus(@PathVariable int order_id){
+        AllOrders allOrdersOut = orderedService.updateOrderStatus(order_id);
 
-        return ResponseEntity.of(Optional.of(orderedOut));
+        return ResponseEntity.of(Optional.of(allOrdersOut));
 
     }
 
