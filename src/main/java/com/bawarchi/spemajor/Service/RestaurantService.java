@@ -2,6 +2,7 @@ package com.bawarchi.spemajor.Service;
 
 import com.bawarchi.spemajor.Repository.RestaurantRepository;
 import com.bawarchi.spemajor.model.Restaurant;
+import com.bawarchi.spemajor.model.Role;
 import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Service;
 import org.springframework.web.bind.annotation.RequestBody;
@@ -20,7 +21,7 @@ public class RestaurantService {
 
         restaurantOut.setUsername(restaurantIn.getUsername());
         restaurantOut.setPassword(restaurantIn.getPassword());
-        restaurantOut.setRole("ROLE_RESTAURANT");
+        restaurantOut.setRole(Role.ROLE_RESTAURANT);
         restaurantOut.setName(restaurantIn.getName());
         restaurantOut.setContact(restaurantIn.getContact());
         restaurantOut.setFoodCourtId(restaurantIn.getFoodCourtId());

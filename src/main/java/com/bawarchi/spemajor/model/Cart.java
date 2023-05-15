@@ -20,18 +20,18 @@ public class Cart {
     private int RestaurantId;
 
     @ManyToOne
-    private User user;
+    private Customer customer;
 
     public Cart() {
     }
 
-    public Cart(int cartId, int dishId, String dishName, int dishPrice, int restaurantId, User user) {
+    public Cart(int cartId, int dishId, String dishName, int dishPrice, int restaurantId, Customer customer) {
         this.cartId = cartId;
         this.dishId = dishId;
         this.dishName = dishName;
         this.dishPrice = dishPrice;
         RestaurantId = restaurantId;
-        this.user = user;
+        this.customer = customer;
     }
 
     public int getCartId() {
@@ -74,12 +74,12 @@ public class Cart {
         RestaurantId = restaurantId;
     }
 
-    public User getUser() {
-        return user;
+    public Customer getUser() {
+        return customer;
     }
 
-    public void setUser(User user) {
-        this.user = user;
+    public void setUser(Customer customer) {
+        this.customer = customer;
     }
 
     @Override
@@ -90,7 +90,7 @@ public class Cart {
                 ", dishName='" + dishName + '\'' +
                 ", dishPrice=" + dishPrice +
                 ", RestaurantId=" + RestaurantId +
-                ", user=" + user +
+                ", user=" + customer +
                 '}';
     }
 }

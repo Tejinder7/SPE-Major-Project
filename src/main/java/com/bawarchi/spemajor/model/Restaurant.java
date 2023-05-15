@@ -8,7 +8,7 @@ import java.util.List;
 
 @Entity
 @PrimaryKeyJoinColumn(name = "id")
-public class Restaurant extends RestaurantAuth{
+public class Restaurant extends SuperAuth{
     private String name;
 
     private String contact;

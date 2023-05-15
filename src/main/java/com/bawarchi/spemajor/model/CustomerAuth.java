@@ -4,11 +4,11 @@
 //
 //@Entity
 //@Inheritance(strategy = InheritanceType.JOINED)
-//public class RestaurantAuth {
+//public class CustomerAuth {
 //    @Id
 //    @GeneratedValue
 //    @Column(unique = true)
-//    private int restaurantAuthId;
+//    private int userAuthId;
 //
 //    @Column(unique = true)
 //    private String username;
@@ -17,22 +17,22 @@
 //
 //    private String  role;
 //
-//    public RestaurantAuth() {
+//    public CustomerAuth() {
 //    }
 //
-//    public RestaurantAuth(int restaurantAuthId, String username, String password, String role) {
-//        this.restaurantAuthId = restaurantAuthId;
+//    public CustomerAuth(int userAuthId, String username, String password, String role) {
+//        this.userAuthId = userAuthId;
 //        this.username = username;
 //        this.password = password;
 //        this.role = role;
 //    }
 //
-//    public int getRestaurantAuthId() {
-//        return restaurantAuthId;
+//    public int getUserAuthId() {
+//        return userAuthId;
 //    }
 //
-//    public void setRestaurantAuthId(int restaurantAuthId) {
-//        this.restaurantAuthId = restaurantAuthId;
+//    public void setUserAuthId(int userAuthId) {
+//        this.userAuthId = userAuthId;
 //    }
 //
 //    public String getUsername() {
@@ -61,11 +61,12 @@
 //
 //    @Override
 //    public String toString() {
-//        return "RestaurantAuth{" +
-//                "restaurantAuthId=" + restaurantAuthId +
+//        return "userAuth{" +
+//                "userAuthId=" + userAuthId +
 //                ", username='" + username + '\'' +
 //                ", password='" + password + '\'' +
 //                ", role='" + role + '\'' +
 //                '}';
 //    }
 //}
+//

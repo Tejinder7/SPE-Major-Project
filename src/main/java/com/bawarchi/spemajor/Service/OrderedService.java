@@ -21,7 +21,7 @@ public class OrderedService {
 
 
     public List<AllOrders> fetchPendingOrders(int restaurant_id) throws RuntimeException{
-        Restaurant restaurant = restaurantRepository.findByRestaurantAuthId(restaurant_id);
+        Restaurant restaurant = restaurantRepository.findByAuthId(restaurant_id);
 
         if(restaurant==null){
             System.out.println("Restaurant not found");

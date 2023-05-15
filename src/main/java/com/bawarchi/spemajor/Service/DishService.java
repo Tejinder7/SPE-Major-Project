@@ -22,7 +22,7 @@ public class DishService {
 
 
     public List<Dish> fetchDishes(int restaurant_id) throws RuntimeException{
-        Restaurant restaurant = restaurantRepository.findByRestaurantAuthId(restaurant_id);
+        Restaurant restaurant = restaurantRepository.findByAuthId(restaurant_id);
 
         if(restaurant==null){
             System.out.println("Restaurant not found");
@@ -34,7 +34,7 @@ public class DishService {
     }
 
     public Dish addDish(int restaurant_id, Dish dishIn) throws RuntimeException{
-        Restaurant restaurant = restaurantRepository.findByRestaurantAuthId(restaurant_id);
+        Restaurant restaurant = restaurantRepository.findByAuthId(restaurant_id);
 
         if(restaurant==null){
             System.out.println("Restaurant not found");
