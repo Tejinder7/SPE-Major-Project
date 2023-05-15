@@ -1,5 +1,6 @@
 package com.bawarchi.spemajor.model;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import jakarta.persistence.Entity;
 import jakarta.persistence.OneToMany;
 import jakarta.persistence.PrimaryKeyJoinColumn;
@@ -13,21 +14,23 @@ public class Restaurant extends SuperAuth{
 
     private String contact;
 
-    private int FoodCourtId;
+    private int foodCourtId;
 
     @OneToMany(mappedBy = "restaurant")
     private List<Dish> dishList;
 
     @OneToMany(mappedBy = "restaurant")
+    @JsonIgnore
     private List<AllOrders> allOrdersList;
 
     public Restaurant() {
     }
 
-    public Restaurant(String name, String contact, int foodCourtId, List<Dish> dishList, List<AllOrders> allOrdersList) {
+    public Restaurant(int authId, String username, String password, Role role, String name, String contact, int foodCourtId, List<Dish> dishList, List<AllOrders> allOrdersList) {
+        super(authId, username, password, role);
         this.name = name;
         this.contact = contact;
-        FoodCourtId = foodCourtId;
+        this.foodCourtId = foodCourtId;
         this.dishList = dishList;
         this.allOrdersList = allOrdersList;
     }
@@ -49,11 +52,19 @@ public class Restaurant extends SuperAuth{
     }
 
     public int getFoodCourtId() {
-        return FoodCourtId;
+        return foodCourtId;
     }
 
     public void setFoodCourtId(int foodCourtId) {
-        FoodCourtId = foodCourtId;
+        this.foodCourtId = foodCourtId;
+    }
+
+    public List<AllOrders> getAllOrdersList() {
+        return allOrdersList;
+    }
+
+    public void setAllOrdersList(List<AllOrders> allOrdersList) {
+        this.allOrdersList = allOrdersList;
     }
 
     public List<Dish> getDishList() {
@@ -64,22 +75,14 @@ public class Restaurant extends SuperAuth{
         this.dishList = dishList;
     }
 
-    public List<AllOrders> getOrderList() {
-        return allOrdersList;
-    }
-
-    public void setOrderList(List<AllOrders> allOrdersList) {
-        this.allOrdersList = allOrdersList;
-    }
-
     @Override
     public String toString() {
         return "Restaurant{" +
                 "name='" + name + '\'' +
                 ", contact='" + contact + '\'' +
-                ", FoodCourtId=" + FoodCourtId +
+                ", foodCourtId=" + foodCourtId +
                 ", dishList=" + dishList +
-                ", orderList=" + allOrdersList +
+                ", allOrdersList=" + allOrdersList +
                 '}';
     }
 }
