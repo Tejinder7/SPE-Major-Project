@@ -8,18 +8,18 @@ import java.util.List;
 
 @Entity
 @PrimaryKeyJoinColumn(name = "id")
-public class User extends userAuth{
+public class Customer extends SuperAuth {
     private String name;
 
     private String contact;
 
-    @OneToMany(mappedBy = "user")
+    @OneToMany(mappedBy = "customer")
     private List<Cart> cartList;
 
-    public User() {
+    public Customer() {
     }
 
-    public User(String name, String contact, List<Cart> cartList) {
+    public Customer(String name, String contact, List<Cart> cartList) {
         this.name = name;
         this.contact = contact;
         this.cartList = cartList;

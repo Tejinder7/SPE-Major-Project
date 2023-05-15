@@ -7,6 +7,8 @@ import java.util.Optional;
 
 public interface SuperAuthRepository extends JpaRepository<SuperAuth, Integer> {
 
-    SuperAuth findByUsername(String username);
+//    SuperAuth findByUsername(String username);
+
+    Optional<SuperAuth> findByUsername(String username);
 
 }
