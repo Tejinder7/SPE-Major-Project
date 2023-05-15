@@ -4,6 +4,8 @@ import com.bawarchi.spemajor.Repository.SuperAuthRepository;
 import com.bawarchi.spemajor.model.SuperAuth;
 import org.springframework.stereotype.Service;
 
+import java.util.Optional;
+
 @Service
 public class SuperAuthService {
 
@@ -14,10 +16,10 @@ public class SuperAuthService {
     }
 
     public SuperAuth loginCheck(String username, String password, String role) throws RuntimeException{
-        SuperAuth superAuth = superAuthRepository.findByUsername(username);
+        Optional<SuperAuth> superAuth = superAuthRepository.findByUsername(username);
 
-        if(superAuth.getRole().toString().equals(role) && superAuth.getPassword().equals(password)){
-            return superAuth;
+        if(superAuth.get().getRole().toString().equals(role) && superAuth.get().getPassword().equals(password)){
+            return superAuth.get();
         }else {
             System.out.println("SuperAuth Login Failed");
             throw new RuntimeException();
