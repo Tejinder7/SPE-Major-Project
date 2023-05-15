@@ -44,4 +44,11 @@ public class AllOrdersService {
 
         return allOrdersRepository.save(order.get());
     }
+
+    public AllOrders addOrder(AllOrders order, int userId, int tableNumber){
+        order.setUserId(userId);
+        order.setTableNumber(tableNumber);
+
+        return allOrdersRepository.save(order);
+    }
 }
