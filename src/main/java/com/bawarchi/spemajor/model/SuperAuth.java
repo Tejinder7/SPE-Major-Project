@@ -11,7 +11,7 @@ import java.util.List;
 
 @Entity
 @Inheritance(strategy = InheritanceType.JOINED)
-public class SuperAuth implements UserDetails{
+public class SuperAuth implements UserDetails {
     @Id
     @GeneratedValue
     @Column(unique = true)
@@ -35,6 +35,12 @@ public class SuperAuth implements UserDetails{
         this.role = role;
     }
 
+    @Override
+    @JsonIgnore
+    public Collection<? extends GrantedAuthority> getAuthorities() {
+        return List.of(new SimpleGrantedAuthority(role.name()));
+    }
+
     public int getAuthId() {
         return authId;
     }
@@ -50,36 +56,31 @@ public class SuperAuth implements UserDetails{
     @Override
     @JsonIgnore
     public boolean isAccountNonExpired() {
-        return false;
+        return true;
     }
 
     @Override
     @JsonIgnore
     public boolean isAccountNonLocked() {
-        return false;
+        return true;
     }
 
     @Override
     @JsonIgnore
     public boolean isCredentialsNonExpired() {
-        return false;
+        return true;
     }
 
     @Override
     @JsonIgnore
     public boolean isEnabled() {
-        return false;
+        return true;
     }
 
     public void setUsername(String username) {
         this.username = username;
     }
 
-    @Override
-    @JsonIgnore
-    public Collection<? extends GrantedAuthority> getAuthorities() {
-        return List.of(new SimpleGrantedAuthority(role.name()));
-    }
 
     public String getPassword() {
         return password;
@@ -97,12 +98,12 @@ public class SuperAuth implements UserDetails{
         this.role = role;
     }
 
+
     @Override
     public String toString() {
-        return "SuperAuth{" +
+        return "{" +
                 "authId=" + authId +
                 ", username='" + username + '\'' +
-                ", password='" + password + '\'' +
                 ", role=" + role +
                 '}';
     }

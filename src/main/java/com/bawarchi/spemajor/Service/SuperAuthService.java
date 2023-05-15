@@ -1,5 +1,6 @@
 package com.bawarchi.spemajor.Service;
 
+import com.bawarchi.spemajor.Exception.ForbiddenException;
 import com.bawarchi.spemajor.Repository.SuperAuthRepository;
 import com.bawarchi.spemajor.model.SuperAuth;
 import org.springframework.stereotype.Service;
@@ -23,6 +24,15 @@ public class SuperAuthService {
         }else {
             System.out.println("SuperAuth Login Failed");
             throw new RuntimeException();
+        }
+    }
+
+    public void checkIfUserIdExists(String username){
+//        validationHelper.usernamePasswordValidation(username);
+        Optional<SuperAuth> authorization = superAuthRepository.findByUsername(username);
+
+        if(authorization.isPresent()){
+            throw new ForbiddenException("User already exists. Please try again with a different User id");
         }
     }
 
