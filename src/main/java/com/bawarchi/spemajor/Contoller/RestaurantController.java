@@ -61,18 +61,22 @@ public class RestaurantController {
             throw exception;
         }
     }
-    @GetMapping("/{restaurant_id}/fetchPendingOrders")
-    public ResponseEntity<List<AllOrders>> fetchPendingOrders(@PathVariable int restaurant_id){
-        List<AllOrders> orderList = allOrdersService.fetchPendingOrders(restaurant_id);
-
-        return ResponseEntity.of(Optional.of(orderList));
+    @GetMapping("/{restaurantId}/fetchPendingOrders")
+    public ResponseEntity<List<AllOrders>> fetchPendingOrders(@PathVariable int restaurantId){
+        List<AllOrders> allOrdersList;
+        try{
+            allOrdersList = allOrdersService.fetchPendingOrders(restaurantId);
+        }catch (RuntimeException exception){
+            throw exception;
+        }
+        return ResponseEntity.of(Optional.of(allOrdersList));
     }
 
-    @PutMapping("/markOrderComplete/{order_id}")
-    public ResponseEntity<AllOrders> updateOrderStatus(@PathVariable int order_id){
-        AllOrders allOrdersOut = allOrdersService.updateOrderStatus(order_id);
+    @PutMapping("/completeOrder/{orderId}")
+    public ResponseEntity<AllOrders> updateOrderStatus(@PathVariable int orderId){
+        AllOrders updatedOrder = allOrdersService.updateOrderStatus(orderId);
 
-        return ResponseEntity.of(Optional.of(allOrdersOut));
+        return ResponseEntity.of(Optional.of(updatedOrder));
 
     }
 
