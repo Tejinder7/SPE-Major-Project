@@ -6,7 +6,7 @@ import org.springframework.data.jpa.repository.JpaRepository;
 
 import java.util.List;
 
-public interface OrderedRepository extends JpaRepository<AllOrders, Integer> {
+public interface AllOrdersRepository extends JpaRepository<AllOrders, Integer> {
 
     List<AllOrders> findByRestaurantAndStatus(Restaurant restaurant, Boolean status);
 
