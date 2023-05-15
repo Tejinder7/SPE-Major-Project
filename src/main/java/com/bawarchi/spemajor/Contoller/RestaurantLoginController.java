@@ -38,18 +38,18 @@ public class RestaurantLoginController {
 //        return ResponseEntity.of(Optional.of(restaurantAuthOut));
 //    }
 
-    @PostMapping("/")
-    public ResponseEntity<SuperAuth> loginUser(@RequestBody SuperAuth superAuth){
-        SuperAuth restaurantAuthOut = superAuthService.loginCheck(superAuth.getUsername(), superAuth.getPassword(), superAuth.getRole().toString());
+//    @PostMapping("/")
+//    public ResponseEntity<SuperAuth> loginUser(@RequestBody SuperAuth superAuth){
+//        SuperAuth restaurantAuthOut = superAuthService.loginCheck(superAuth.getUsername(), superAuth.getPassword(), superAuth.getRole().toString());
+//
+//        return ResponseEntity.of(Optional.of(restaurantAuthOut));
+//    }
 
-        return ResponseEntity.of(Optional.of(restaurantAuthOut));
-    }
-
-    @PostMapping("/addRestaurant")
-    public ResponseEntity<Restaurant> addRestaurant(@RequestBody Restaurant restaurantIn){
-        Restaurant restaurantOut = restaurantService.addRestaurant(restaurantIn);
-
-        return ResponseEntity.of(Optional.of(restaurantOut));
-    }
+//    @PostMapping("/addRestaurant")
+//    public ResponseEntity<Restaurant> addRestaurant(@RequestBody Restaurant restaurantIn){
+////        Restaurant restaurantOut = restaurantService.addRestaurant(restaurantIn);
+//
+//        return ResponseEntity.of(Optional.of(restaurantOut));
+//    }
 
 }

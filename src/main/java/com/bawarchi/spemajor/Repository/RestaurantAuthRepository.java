@@ -13,4 +13,5 @@ import org.springframework.data.jpa.repository.JpaRepository;
 public interface RestaurantAuthRepository extends JpaRepository<SuperAuth, Integer> {
 
     SuperAuth findByUsername(String username);
+
 }
