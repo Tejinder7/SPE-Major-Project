@@ -9,12 +9,12 @@ import org.springframework.stereotype.Service;
 import java.util.List;
 
 @Service
-public class OrderedService {
+public class AllOrdersService {
 
     private OrderedRepository orderedRepository;
     private RestaurantRepository restaurantRepository;
 
-    public OrderedService(OrderedRepository orderedRepository, RestaurantRepository restaurantRepository){
+    public AllOrdersService(OrderedRepository orderedRepository, RestaurantRepository restaurantRepository){
         this.orderedRepository = orderedRepository;
         this.restaurantRepository = restaurantRepository;
     }
