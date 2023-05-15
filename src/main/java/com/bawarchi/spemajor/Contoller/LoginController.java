@@ -3,7 +3,6 @@ package com.bawarchi.spemajor.Contoller;
 import com.bawarchi.spemajor.Security.Auth.AuthenticationService;
 import com.bawarchi.spemajor.Security.Auth.JwtResponse;
 import com.bawarchi.spemajor.Service.SuperAdminService;
-import com.bawarchi.spemajor.Service.SuperAuthService;
 import com.bawarchi.spemajor.model.SuperAdmin;
 import com.bawarchi.spemajor.model.SuperAuth;
 import org.springframework.http.ResponseEntity;
