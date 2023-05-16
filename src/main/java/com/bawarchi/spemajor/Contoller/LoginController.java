@@ -2,7 +2,9 @@ package com.bawarchi.spemajor.Contoller;
 
 import com.bawarchi.spemajor.Security.Auth.AuthenticationService;
 import com.bawarchi.spemajor.Security.Auth.JwtResponse;
+import com.bawarchi.spemajor.Service.CustomerService;
 import com.bawarchi.spemajor.Service.SuperAdminService;
+import com.bawarchi.spemajor.model.Customer;
 import com.bawarchi.spemajor.model.SuperAdmin;
 import com.bawarchi.spemajor.model.SuperAuth;
 import org.springframework.http.ResponseEntity;
@@ -17,9 +19,12 @@ public class LoginController {
     AuthenticationService authenticationService;
     SuperAdminService superAdminService;
 
-    public LoginController(AuthenticationService authenticationService, SuperAdminService superAdminService) {
+    CustomerService customerService;
+
+    public LoginController(AuthenticationService authenticationService, SuperAdminService superAdminService, CustomerService customerService) {
         this.authenticationService = authenticationService;
         this.superAdminService = superAdminService;
+        this.customerService = customerService;
     }
 
     @PostMapping("/")
@@ -44,5 +49,18 @@ public class LoginController {
             throw exception;
         }
         return savedSuperAdmin;
+    }
+
+    @PostMapping("/addCustomer")
+    public Customer addCustomer(@RequestBody Customer customer){
+        Customer savedCustomer;
+        try{
+            savedCustomer = customerService.addCustomer(customer);
+        }
+        catch (Exception exception){
+            throw exception;
+        }
+
+        return savedCustomer;
     }
 }
