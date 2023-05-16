@@ -5,6 +5,7 @@ import com.bawarchi.spemajor.model.AllOrders;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
+import java.util.List;
 import java.util.Optional;
 
 @RestController
@@ -28,5 +29,19 @@ public class CustomerController {
 
         return ResponseEntity.of(Optional.of(savedOrder));
 
+    }
+
+    @GetMapping("/getActiveOrder/{userId}")
+    public ResponseEntity<List<AllOrders>> getActiveOrder(@PathVariable int userId){
+        List<AllOrders> activeOrder;
+
+        try{
+            activeOrder= allOrdersService.fetchActiveOrder(userId);
+        }
+        catch(RuntimeException exception){
+            throw exception;
+        }
+
+        return ResponseEntity.of(Optional.of(activeOrder));
     }
 }

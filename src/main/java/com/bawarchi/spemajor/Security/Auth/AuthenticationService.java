@@ -4,6 +4,7 @@ import com.bawarchi.spemajor.Exception.ForbiddenException;
 import com.bawarchi.spemajor.Exception.ResourceNotFoundException;
 import com.bawarchi.spemajor.Repository.SuperAuthRepository;
 import com.bawarchi.spemajor.Security.Configuration.JwtService;
+import com.bawarchi.spemajor.model.Customer;
 import com.bawarchi.spemajor.model.SuperAuth;
 import org.springframework.security.authentication.AuthenticationManager;
 import org.springframework.security.authentication.UsernamePasswordAuthenticationToken;
@@ -23,10 +24,6 @@ public class AuthenticationService {
 
     public JwtResponse authenticate(SuperAuth request) {
         try{
-            System.out.println(request.getUsername());
-            System.out.println(request.getPassword());
-            System.out.println(request.getRole());
-            System.out.println(new UsernamePasswordAuthenticationToken(request.getUsername(), request.getPassword()));
             authenticationManager.authenticate(
                     new UsernamePasswordAuthenticationToken(
                             request.getUsername(),

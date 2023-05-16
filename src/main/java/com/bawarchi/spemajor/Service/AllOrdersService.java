@@ -71,4 +71,10 @@ public class AllOrdersService {
 
         return allOrdersRepository.save(order);
     }
+
+    public List<AllOrders> fetchActiveOrder(int userId){
+        List<AllOrders> activeOrder= allOrdersRepository.findByUserIdAndAndStatus(userId, false);
+
+        return activeOrder;
+    }
 }
