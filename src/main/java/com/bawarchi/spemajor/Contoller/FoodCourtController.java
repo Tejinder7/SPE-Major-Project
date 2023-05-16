@@ -18,7 +18,7 @@ public class FoodCourtController {
         this.restaurantService = restaurantService;
     }
 
-    @PostMapping("/addRestaurant/{foodCourtId}")
+    @PostMapping("/{foodCourtId}/addRestaurant")
     public ResponseEntity<Restaurant> addRestaurant(@RequestBody Restaurant restaurant, @PathVariable int foodCourtId){
         Restaurant savedRestaurant;
         try{
@@ -29,7 +29,7 @@ public class FoodCourtController {
 
         return ResponseEntity.of(Optional.of(savedRestaurant));
     }
-    @GetMapping("/allRestaurants/{foodCourtId}")
+    @GetMapping("/{foodCourtId}/allRestaurants")
     public ResponseEntity<List<Restaurant>> fetchRestaurants(@PathVariable int foodCourtId){
         List<Restaurant> restaurantList = restaurantService.fetchRestaurants(foodCourtId);
 
