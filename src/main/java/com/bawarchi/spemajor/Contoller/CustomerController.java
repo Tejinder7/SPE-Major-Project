@@ -8,7 +8,7 @@ import org.springframework.web.bind.annotation.*;
 import java.util.Optional;
 
 @RestController
-@RequestMapping("/Customer")
+@RequestMapping("/customer")
 public class CustomerController {
     private AllOrdersService allOrdersService;
 
@@ -16,12 +16,12 @@ public class CustomerController {
         this.allOrdersService = allOrdersService;
     }
 
-    @PostMapping("/placeOrder/{userId}/{tableNumber}")
-    public ResponseEntity<AllOrders> placeOrder(@RequestBody AllOrders order, @PathVariable int userId, int tableNumber){
+    @PostMapping("/placeOrder/{userId}/{tableNumber}/{restaurantId}")
+    public ResponseEntity<AllOrders> placeOrder(@RequestBody AllOrders order, @PathVariable int userId, @PathVariable int tableNumber, @PathVariable int restaurantId){
         AllOrders savedOrder;
 
         try{
-            savedOrder = allOrdersService.addOrder(order, userId, tableNumber);
+            savedOrder = allOrdersService.addOrder(order, userId, tableNumber, restaurantId);
         }catch(RuntimeException exception){
             throw exception;
         }
